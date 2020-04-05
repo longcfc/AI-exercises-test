@@ -1,0 +1,39 @@
+import numpy as np
+from matplotlib import pyplot as plt
+x = np.linspace(-3,3,100)
+y = (np.sin(2*x))*((x**3)/5+x**2+x*5)
+plt.plot(x,y)
+f = lambda x: (np.sin(2*x))*((x**3)/5+x**2+x*5)
+grad_f = lambda x:(np.cos(2*x))*((x**3)/5+x**2+x*5)+(np.sin(2*x))*(3*(x**2)/5+x*2+5)
+x0 = -1.5
+e0 = 0.01
+grad_colect = []
+lost_colect = []
+for i in range (40):
+    print(x0)
+    x0 = x0- e0*grad_f(x0)
+    grad_colect.append(grad_f(x0))
+    lost_colect.append(f(x0))
+plt.plot(lost_colect, '-o')
+
+x1 = 0.5
+e0 = 0.01
+grad_colect = []
+lost_colect = []
+for i in range (40):
+    print(x1)
+    x1 = x1- e0*grad_f(x1)
+    grad_colect.append(grad_f(x1))
+    lost_colect.append(f(x1))
+plt.plot(lost_colect, '-o')
+
+x2 = 2.0
+e0 = 0.01
+grad_colect = []
+lost_colect = []
+for i in range (40):
+    print(x2)
+    x2 = x2- e0*grad_f(x2)
+    grad_colect.append(grad_f(x2))
+    lost_colect.append(f(x2))
+plt.plot(lost_colect, '-o')
